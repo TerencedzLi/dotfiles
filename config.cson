@@ -1,0 +1,62 @@
+"*":
+  "atom-beautify":
+    analytics: false
+    beautifyEntireFileOnSave: false
+    html_brace_style: "expand"
+    html_wrap_attributes: "force"
+    js_brace_style: "end-expand"
+  "autocomplete-plus": {}
+  autosave:
+    enabled: true
+  core:
+    disabledPackages: [
+      "minimap"
+    ]
+    themes: [
+      "one-dark-ui"
+      "tomorrow-night-eighties-syntax"
+    ]
+  editor:
+    fontSize: 12
+    invisibles: {}
+    normalizeIndentOnPaste: false
+  "exception-reporting":
+    userId: "9615611f-5e9c-69c0-0a87-8d1ac011541f"
+  "git-diff":
+    showIconsInEditorGutter: true
+  "js-hyperclick": {}
+  linter:
+    errorPanelHeight: 26
+  "linter-eslint": {}
+  "linter-jsxhint": {}
+  "one-dark-ui": {}
+  react: {}
+  welcome:
+    showOnStartup: false
+".attribute-values.js.jsx.source":
+  editor:
+    normalizeIndentOnPaste: "false"
+".coffee.jsx.source":
+  editor:
+    normalizeIndentOnPaste: "false"
+".js.jsx.react.source":
+  editor:
+    normalizeIndentOnPaste: "false"
+".js.jsx.source":
+  editor:
+    normalizeIndentOnPaste: "false"
+    showIndentGuide: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+".js.regexp.replacement.source":
+  editor:
+    normalizeIndentOnPaste: "false"
+".js.regexp.source":
+  editor:
+    normalizeIndentOnPaste: "false"
+".js.source":
+  editor:
+    normalizeIndentOnPaste: "false"
+".js.source.subtlegradient":
+  editor:
+    normalizeIndentOnPaste: "false"
