@@ -62,12 +62,13 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 " Fzf Config
 nnoremap <C-p> :Files<cr>
 set grepprg=rg\ --vimgrep
-nnoremap K :execute 'grep! "\b"'.expand("<cword>").'"\b"'<CR>:cw<CR>
 let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --ignore-case  --follow --color "always" '
 
-command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
+nnoremap K :execute 'grep! "\b"'.expand("<cword>").'"\b"'<CR>:cw<CR>
 
-nmap <leader>vr :sp $MYVIMRC<cr>
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
+nmap <leader>F :F
+nmap <leader>vr :tabnew $MYVIMRC<cr>
 map <leader>so :source $MYVIMRC<cr>
 map <leader>n :bn<cr> 
 map <leader>w :bd<cr>
