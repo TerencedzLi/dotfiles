@@ -1,13 +1,21 @@
 " Get the defaults that most users want.
 filetype off
 
-" Vundle package manager
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Install plugins
+  if empty(glob("~/.vim/autoload/plug.vim"))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+          \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    auto VimEnter * PlugInstall
+  endif
+              
+" Vim-Plug package manager
+call plug#begin('~/.vim/plugged')
 
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-rails'
 
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 
@@ -33,6 +41,8 @@ if has("autocmd")
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
 
+  " Close quickfix window when selecting
+  autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
   augroup END
 endif " has("autocmd")
 
@@ -44,22 +54,23 @@ set mouse=a
 set statusline+=%F
 set autoindent
 set laststatus=2
+set tags=./tags;
 
 " Setting tabs as spaces
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
-" Setting CtrlP to use ag
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""' 
-  let g:ctrlp_use_caching = 0
-  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-  command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
-endif
+" Fzf Config
+nnoremap <C-p> :Files<cr>
+set grepprg=rg\ --vimgrep
+nnoremap K :execute 'grep! "\b"'.expand("<cword>").'"\b"'<CR>:cw<CR>
+let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --ignore-case  --follow --color "always" '
+
+command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
 
 nmap <leader>vr :sp $MYVIMRC<cr>
-nmap <leader>so :source $MYVIMRC<cr>
+map <leader>so :source $MYVIMRC<cr>
+map <leader>n :bn<cr> 
+map <leader>w :bd<cr>
 
 " Add optional packages.
 "
