@@ -14,6 +14,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-fugitive'
+Plug 'janko-m/vim-test'
+Plug 'leafgarland/typescript-vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -57,7 +61,7 @@ set laststatus=2
 set tags=./tags;
 
 " Setting tabs as spaces
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " Fzf Config
 nnoremap <C-p> :Files<cr>
@@ -71,7 +75,23 @@ nmap <leader>F :F
 nmap <leader>vr :tabnew $MYVIMRC<cr>
 map <leader>so :source $MYVIMRC<cr>
 map <leader>n :bn<cr> 
+map <leader>m :bp<cr> 
 map <leader>w :bd<cr>
+
+" Vim Test Config
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-s> :TestSuite<CR>
+nmap <silent> t<C-l> :TestLast<CR>
+nmap <silent> t<C-g> :TestVisit<CR>
+
+" GitGutter Config
+set updatetime=100
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_removed_first_line = '•↑'
+let g:gitgutter_sign_modified_removed = '•'
 
 " Add optional packages.
 "
