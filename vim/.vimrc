@@ -77,6 +77,7 @@ map <leader>so :source $MYVIMRC<cr>
 map <leader>n :bn<cr> 
 map <leader>m :bp<cr> 
 map <leader>w :bd<cr>
+map <leader>s :w<cr>
 
 " Vim Test Config
 nmap <silent> t<C-n> :TestNearest<CR>
