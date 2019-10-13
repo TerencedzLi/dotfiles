@@ -18,6 +18,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'janko-m/vim-test'
 Plug 'leafgarland/typescript-vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+Plug 'pgr0ss/vimux-ruby-test'
 
 call plug#end()
 
@@ -103,3 +106,13 @@ let g:gitgutter_sign_modified_removed = '•'
 if has('syntax') && has('eval')
   packadd! matchit
 endif
+
+" Shopify Testing
+let g:vimux_ruby_cmd_unit_test = "dev t"
+let g:vimux_ruby_cmd_all_tests = "dev t"
+let g:vimux_ruby_cmd_context = "dev t"
+let g:vimux_ruby_clear_console_on_run = 0
+
+nmap tt :RunAllRubyTests<CR>
+nmap tf :RunRubyFocusedTest<CR>
+nmap tl :VimuxRunLastCommand<CR>
