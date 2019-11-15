@@ -10,7 +10,6 @@ filetype off
               
 " Vim-Plug package manager
 call plug#begin('~/.vim/plugged')
-
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-rails'
@@ -21,6 +20,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'pgr0ss/vimux-ruby-test'
+Plug 'ervandew/supertab'
 
 call plug#end()
 
@@ -49,7 +49,7 @@ if has("autocmd")
   autocmd FileType text setlocal textwidth=78
 
   " Close quickfix window when selecting
-  autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
+  " autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
   augroup END
 endif " has("autocmd")
 
@@ -73,14 +73,35 @@ let g:rg_command = 'rg --column --line-number --no-heading --fixed-strings --ign
 
 nnoremap K :execute 'grep! "\b"'.expand("<cword>").'"\b"'<CR>:cw<CR>
 
-command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
-nmap <leader>F :F
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+" command! -bang -nargs=* F call fzf#vim#grep(g:rg_command . shellescape(<q-args>), 1, <bang>0)
+
+nmap <C-f> :Rg <C-R><C-W>
+nmap ,f :Rg!<space>
+
+nmap <leader>tm :tabnew ~/.tmux.conf<cr>
 nmap <leader>vr :tabnew $MYVIMRC<cr>
 map <leader>so :source $MYVIMRC<cr>
 map <leader>n :bn<cr> 
 map <leader>m :bp<cr> 
 map <leader>w :bd<cr>
-map <leader>s :w<cr>
+map <leader>q :q<cr>
+nnoremap <c-a> :update<cr>
+inoremap <c-a> <Esc>:update<cr>gi
+nmap <leader>e :Explore<CR>
+nmap // /<C-R><C-W><CR>
+
+" Clear the search buffer when hitting return
+ " function! MapCR()
+   " nnoremap <cr> :nohlsearch<cr>
+ " endfunction
+ " call MapCR()
 
 " Vim Test Config
 nmap <silent> t<C-n> :TestNearest<CR>
@@ -116,3 +137,22 @@ let g:vimux_ruby_clear_console_on_run = 0
 nmap tt :RunAllRubyTests<CR>
 nmap tf :RunRubyFocusedTest<CR>
 nmap tl :VimuxRunLastCommand<CR>
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+noremap <leader>= :wincmd =<cr>
+
+" CTRL-A CTRL-Q to select all and build quickfix list
+
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {'ctrl-q': function('s:build_quickfix_list')}
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
