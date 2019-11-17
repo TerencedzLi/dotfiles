@@ -15,7 +15,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-fugitive'
 Plug 'janko-m/vim-test'
-Plug 'leafgarland/typescript-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
@@ -62,6 +61,8 @@ set statusline+=%F
 set autoindent
 set laststatus=2
 set tags=./tags;
+let $RUBYHOME=$HOME."/.rubies/ruby-2.6.5"
+set rubydll=$HOME/.rubies/ruby-2.6.5/lib/libruby.2.6-static.a
 
 " Setting tabs as spaces
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
