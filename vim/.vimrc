@@ -20,7 +20,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'pgr0ss/vimux-ruby-test'
 Plug 'ervandew/supertab'
-
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 filetype plugin indent on
@@ -104,13 +104,6 @@ nmap // /<C-R><C-W><CR>
  " endfunction
  " call MapCR()
 
-" Vim Test Config
-nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> t<C-f> :TestFile<CR>
-nmap <silent> t<C-s> :TestSuite<CR>
-nmap <silent> t<C-l> :TestLast<CR>
-nmap <silent> t<C-g> :TestVisit<CR>
-
 " GitGutter Config
 set updatetime=100
 let g:gitgutter_sign_added = '•'
@@ -146,14 +139,3 @@ autocmd VimResized * :wincmd =
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 noremap <leader>= :wincmd =<cr>
 
-" CTRL-A CTRL-Q to select all and build quickfix list
-
-function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
-endfunction
-
-let g:fzf_action = {'ctrl-q': function('s:build_quickfix_list')}
-
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
