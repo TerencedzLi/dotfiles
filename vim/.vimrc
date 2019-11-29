@@ -61,8 +61,6 @@ set statusline+=%F
 set autoindent
 set laststatus=2
 set tags=./tags;
-let $RUBYHOME=$HOME."/.rubies/ruby-2.6.5"
-set rubydll=$HOME/.rubies/ruby-2.6.5/lib/libruby.2.6-static.a
 
 " Setting tabs as spaces
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
