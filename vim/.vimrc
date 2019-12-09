@@ -21,6 +21,13 @@ Plug 'benmills/vimux'
 Plug 'pgr0ss/vimux-ruby-test'
 Plug 'ervandew/supertab'
 Plug 'leafgarland/typescript-vim'
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-syntax'
+Plug 'kana/vim-textobj-line'
+Plug 'nelstrom/vim-textobj-rubyblock'
 call plug#end()
 
 filetype plugin indent on
