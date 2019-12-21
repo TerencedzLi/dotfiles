@@ -94,6 +94,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Work
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
 export NVM_DIR="$HOME/.nvm"
@@ -109,8 +110,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 alias tags="ctags -R --exclude=.git --exclude=log *" 
 alias tat="~/Workspace/dotfiles/tat"
 alias v="vim ~/.vimrc"
+alias nv="nvim ~/.config/nvim/init.vim"
 
-# zsh
-alias vim="stty stop '' -ixoff ; vim"
-# # `Frozing' tty, so after any command terminal settings will be restored
-ttyctl -f
