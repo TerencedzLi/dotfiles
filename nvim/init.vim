@@ -6,12 +6,16 @@ map <leader>so :source $MYVIMRC<CR>
 nmap <leader>tm :tabnew ~/.tmux.conf<CR>
 nmap <leader>vr :tabnew $MYVIMRC<CR>
 
-"=== Mappings ===
+"=== Mappings ==
 nnoremap <c-a> :update<cr>
 inoremap <c-a> <Esc>:update<cr>gi
 
 nmap // /<C-R><C-W><CR>
 nnoremap <c-n> :nohlsearch<cr>
+
+nmap <leader>e :Explore<CR>
+
+set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 map <leader>w :bd<cr>
 map ,n :bn<cr>
@@ -59,7 +63,6 @@ Plug 'janko-m/vim-test'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
-Plug 'pgr0ss/vimux-ruby-test'
 Plug 'leafgarland/typescript-vim'
 
 Plug 'kana/vim-textobj-user'
@@ -68,9 +71,15 @@ Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-line'
 Plug 'nelstrom/vim-textobj-rubyblock'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " === Plugin Config ===
+
+" Airline theme
+let g:airline_theme='fruit_punch'
 
 " GitGutter Config
 set updatetime=100
@@ -81,6 +90,12 @@ let g:gitgutter_sign_removed_first_line = '•↑'
 let g:gitgutter_sign_modified_removed = '•'
 
 " === Test Config vim-test ===
+let test#strategy = "vimux"
+if !empty(glob("./dev.yml"))
+  let test#ruby#rspec#executable = 'dev t'
+  let test#ruby#rails#executable = 'dev t'
+endif
+
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>

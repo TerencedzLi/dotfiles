@@ -107,7 +107,7 @@ source /opt/dev/sh/chruby/chruby.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
-alias tags="ctags -R --exclude=.git --exclude=log *" 
+alias tags="ctags -R --exclude=.git --exclude=log --exclude=node_modules *"
 alias tat="~/Workspace/dotfiles/tat"
 alias v="vim ~/.vimrc"
 alias nv="nvim ~/.config/nvim/init.vim"
