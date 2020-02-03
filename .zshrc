@@ -111,4 +111,5 @@ alias tags="ctags -R --exclude=.git --exclude=log --exclude=node_modules *"
 alias tat="~/Workspace/dotfiles/tat"
 alias v="vim ~/.vimrc"
 alias nv="nvim ~/.config/nvim/init.vim"
-
+alias vim="nvim"
+alias z="nvim ~/.zshrc"
