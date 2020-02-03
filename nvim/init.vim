@@ -1,5 +1,6 @@
 "=== Appearance ===
 set number
+set termguicolors
 
 "=== Config Files ===
 map <leader>so :source $MYVIMRC<CR>
@@ -18,15 +19,34 @@ nmap <leader>e :Explore<CR>
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 map <leader>w :bd<cr>
-map ,n :bn<cr>
+map ,n :bp<cr>
 map ,m :bn<cr>
+map <c-b> :Buffers<cr>
 
+vmap <CR> y/<C-R>"<CR>
+vmap <C-f> y:Rg <C-R>"
 "=== File Search ===
 nnoremap <C-p> :Files<CR>
 
 "=== Word Search ===
 nmap <C-f> :Rg <C-R><C-W>
 nmap ,f :Rg!<space>
+
+" CTRL-A CTRL-Q to select all and build quickfix list
+
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
 command! -bang -nargs=* Rg
    \ call fzf#vim#grep(
@@ -58,7 +78,10 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-rails'
+
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+
 Plug 'janko-m/vim-test'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
@@ -70,16 +93,22 @@ Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-syntax'
 Plug 'kana/vim-textobj-line'
+Plug 'machakann/vim-sandwich'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+Plug 'bluz71/vim-nightfly-guicolors'
 call plug#end()
+
+colorscheme nightfly
 
 " === Plugin Config ===
 
 " Airline theme
-let g:airline_theme='fruit_punch'
+let g:airline_theme='nightfly'
+let g:airline#extensions#tabline#enabled = 1
 
 " GitGutter Config
 set updatetime=100
