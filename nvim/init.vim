@@ -17,6 +17,7 @@ nnoremap <c-n> :nohlsearch<cr>
 nmap <leader>e :Explore<CR>
 
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+set cc=120
 
 map <leader>w :bd<cr>
 map ,n :bp<cr>
@@ -78,6 +79,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-commentary'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
