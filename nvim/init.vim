@@ -1,6 +1,7 @@
-"=== Appearance ===
+"=== Options ===
 set number
-set termguicolors
+set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
+set clipboard+=unnamed
 
 "=== Config Files ===
 map <leader>so :source $MYVIMRC<CR>
@@ -16,9 +17,6 @@ nnoremap <c-n> :nohlsearch<cr>
 
 nmap <leader>e :Explore<CR>
 
-set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
-set cc=120
-
 map <leader>w :bd<cr>
 map ,n :bp<cr>
 map ,m :bn<cr>
@@ -26,6 +24,17 @@ map <c-b> :Buffers<cr>
 
 vmap <CR> y/<C-R>"<CR>
 vmap <C-f> y:Rg <C-R>"
+
+nnoremap d "_d
+vnoremap d "_d
+nnoremap D "_D
+vnoremap D "_D
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
+vnoremap p "_dP
+
 "=== File Search ===
 nnoremap <C-p> :Files<CR>
 
@@ -46,6 +55,8 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 
@@ -101,15 +112,13 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'bluz71/vim-nightfly-guicolors'
-call plug#end()
+Plug 'dense-analysis/ale'
 
-colorscheme nightfly
+call plug#end()
 
 " === Plugin Config ===
 
 " Airline theme
-let g:airline_theme='nightfly'
 let g:airline#extensions#tabline#enabled = 1
 
 " GitGutter Config
@@ -132,3 +141,12 @@ nmap <silent> t<C-f> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
+
+" === Ale ===
+" Set specific linters
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+\   'ruby': ['rubocop'],
+\}
+let g:ale_fixers = {'ruby': ['rubocop']}
+let g:ale_fix_on_save = 1
