@@ -2,6 +2,8 @@
 set number
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set clipboard+=unnamed
+set switchbuf+=usetab
+" set mouse=a
 
 "=== Config Files ===
 map <leader>so :source $MYVIMRC<CR>
@@ -17,7 +19,8 @@ nnoremap <c-n> :nohlsearch<cr>
 
 nmap <leader>e :Explore<CR>
 
-map <leader>w :bd<cr>
+map <leader>w :Bdelete<cr>
+map <leader>q :q<cr>
 map ,n :bp<cr>
 map ,m :bn<cr>
 map <c-b> :Buffers<cr>
@@ -34,6 +37,10 @@ vnoremap c "_c
 nnoremap C "_C
 vnoremap C "_C
 vnoremap p "_dP
+
+nmap ,v :vsplit<cr>
+nmap m ]m
+nmap M [m
 
 "=== File Search ===
 nnoremap <C-p> :Files<CR>
@@ -113,13 +120,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'dense-analysis/ale'
-
+Plug 'moll/vim-bbye'
 call plug#end()
 
 " === Plugin Config ===
 
 " Airline theme
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#enabled = 1
 
 " GitGutter Config
 set updatetime=100

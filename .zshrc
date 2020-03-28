@@ -105,7 +105,7 @@ export GOPATH=$HOME/go
 source /opt/dev/sh/chruby/chruby.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!*.rbi"'
 
 alias tags="ctags -R --exclude=.git --exclude=log --exclude=node_modules *"
 alias tat="~/Workspace/dotfiles/tat"
