@@ -101,8 +101,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 export GOPATH=$HOME/go
-
-source /opt/dev/sh/chruby/chruby.sh
+[ -f /opt/dev/sh/chruby/chruby.sh ] && source /opt/dev/sh/chruby/chruby.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!*.rbi"'
