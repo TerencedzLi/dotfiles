@@ -12,11 +12,14 @@ nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
 " Buffer management
-map <leader>w :Bdelete<cr>
+map <leader>w :bd<cr>
 map <leader>q :q<cr>
-map <s-tab> :bp<cr>
-map <tab> :bn<cr>
+map ,m :bn<cr>
+map ,n :bp<cr>
 map <c-b> :Buffers<cr>
+map <leader>gg :Gblame<cr>
+map <leader>j mJ
+map <leader>k mK
 
 " Search currently selected words
 vmap <CR> y/<C-R>"<CR>

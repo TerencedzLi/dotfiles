@@ -10,12 +10,16 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-commentary'
-
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-dispatch'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rbenv'
+Plug 'tpope/vim-bundler'
 
 Plug 'janko-m/vim-test'
 Plug 'airblade/vim-gitgutter'
@@ -35,7 +39,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'dense-analysis/ale'
-Plug 'moll/vim-bbye'
+" Plug 'moll/vim-bbye'
 
 Plug 'Shopify/shadowenv.vim'
 call plug#end()
