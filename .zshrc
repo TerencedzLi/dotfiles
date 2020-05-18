@@ -94,6 +94,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+PATH_DIRECTORIES=(
+  $HOME/bin
+)
+
+for directory in $PATH_DIRECTORIES ; do
+    if [ -d "$directory" ] ; then
+        PATH+=":$directory"
+    fi
+done
 # Work
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
