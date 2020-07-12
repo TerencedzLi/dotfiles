@@ -2,13 +2,15 @@ source ~/.config/nvim/config/test.vim
 source ~/.config/nvim/config/fzf.vim
 
 "=== Options ===
-set number
+set number relativenumber
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set clipboard+=unnamed
 set switchbuf+=usetab
 set nowrap
 set noswapfile
 set nobackup
+set backspace=2
+set mouse=a
 
 "=== Config Files ===
 let g:netrw_browse_split=2
@@ -32,6 +34,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+
+Plug 'Raimondi/delimitMate'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -99,12 +104,15 @@ nnoremap <silent> <Leader>- :vertical resize -5<CR>
 " Buffer management
 map <leader>w :bd<cr>
 map <leader>q :q<cr>
-map ,m :bn<cr>
-map ,n :bp<cr>
 map <c-b> :Buffers<cr>
 map <leader>gg :Gblame<cr>
+
+nmap <leader>h :bp<cr>
+nmap <leader>l :bn<cr>
+nmap <leader>bq :bp <BAR> bd #<CR>
 map <leader>j mJ
 map <leader>k mK
+
 
 " Search currently selected words
 vmap <CR> y/<C-R>"<CR>
@@ -153,3 +161,7 @@ autocmd VimResized * :wincmd =
 
 " Genereate tags
 nmap <leader>t :Tags<CR>
+
+" DelimitMate
+let delimitMate_expand_cr = 2
+let delimitMate_expand_space = 1

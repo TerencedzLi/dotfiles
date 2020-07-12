@@ -96,6 +96,7 @@ source $ZSH/oh-my-zsh.sh
 
 PATH_DIRECTORIES=(
   $HOME/bin
+  /Users/terenceli/go/bin
 )
 
 for directory in $PATH_DIRECTORIES ; do
