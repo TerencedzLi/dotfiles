@@ -48,6 +48,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'leafgarland/typescript-vim'
+Plug 'alvan/vim-closetag'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
@@ -61,7 +62,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'dense-analysis/ale'
-Plug 'Shopify/shadowenv.vim'
+" Plug 'Shopify/shadowenv.vim'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'pangloss/vim-javascript'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 " Airline theme
@@ -76,16 +80,27 @@ let g:gitgutter_sign_removed = '•'
 let g:gitgutter_sign_removed_first_line = '•↑'
 let g:gitgutter_sign_modified_removed = '•'
 
-" Ale
+" === Ale ===
 " Set specific linters
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \   'ruby': ['rubocop'],
+      \   'javascript': ['prettier'],
       \}
 let g:ale_fixers = {'ruby': ['rubocop']}
 let g:ale_fix_on_save = 1
 
+" === YouCompleteMe ===
+fun! GoYCM()
+    nnoremap <buffer> <silent> <leader>gd :YcmCompleter GoTo<CR>
+    nnoremap <buffer> <silent> <leader>gr :YcmCompleter GoToReferences<CR>
+    nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
+endfun
 
+autocmd FileType javascript,typescript :call GoYCM()
+
+" === Closetag ===
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.js'
 
 "=== Keyboard ===
 let mapleader = " "
