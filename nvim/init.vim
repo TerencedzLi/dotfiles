@@ -2,7 +2,7 @@ source ~/.config/nvim/config/test.vim
 source ~/.config/nvim/config/fzf.vim
 
 "=== Options ===
-set number relativenumber
+set number
 set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
 set clipboard+=unnamed
 set switchbuf+=usetab
@@ -34,7 +34,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-endwise'
 
 Plug 'Raimondi/delimitMate'
 
@@ -42,13 +42,14 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-bundler'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'janko-m/vim-test'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'leafgarland/typescript-vim'
-Plug 'alvan/vim-closetag'
+" Plug 'alvan/vim-closetag'
 
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
@@ -62,11 +63,24 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'dense-analysis/ale'
-" Plug 'Shopify/shadowenv.vim'
+Plug 'Shopify/shadowenv.vim'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'sainnhe/forest-night'
+
+Plug 'lambdalisue/fern.vim'
 call plug#end()
+
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
+" The configuration options should be placed before `colorscheme forest-night`.
+let g:forest_night_enable_italic = 1
+let g:forest_night_disable_italic_comment = 1
+
+colorscheme forest-night
 
 " Airline theme
 let g:airline#extensions#tabline#enabled = 1
@@ -178,5 +192,5 @@ autocmd VimResized * :wincmd =
 nmap <leader>t :Tags<CR>
 
 " DelimitMate
-let delimitMate_expand_cr = 2
+let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1

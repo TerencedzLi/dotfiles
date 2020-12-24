@@ -60,7 +60,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -116,9 +115,12 @@ export GOPATH=$HOME/go
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob "!*.rbi"'
 
+alias git-cob="~/Workspace/dotfiles/bin/git-cob"
 alias tags="ctags -R --exclude=.git --exclude=log --exclude=node_modules *"
 alias tat="~/Workspace/dotfiles/tat"
 alias v="vim ~/.vimrc"
 alias nv="nvim ~/.config/nvim/init.vim"
 alias vim="nvim"
 alias z="nvim ~/.zshrc"
+source /Users/terenceli/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e /Users/terenceli/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/terenceli/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
