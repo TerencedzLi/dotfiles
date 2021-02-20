@@ -122,5 +122,6 @@ alias v="vim ~/.vimrc"
 alias nv="nvim ~/.config/nvim/init.vim"
 alias vim="nvim"
 alias z="nvim ~/.zshrc"
-source /Users/terenceli/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if [ -e /Users/terenceli/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/terenceli/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+source /Users/terenceli/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

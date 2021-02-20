@@ -111,7 +111,7 @@ fun! GoYCM()
     nnoremap <buffer> <silent> <leader>rr :YcmCompleter RefactorRename<space>
 endfun
 
-autocmd FileType javascript,typescript :call GoYCM()
+autocmd FileType javascript,typescript,python :call GoYCM()
 
 " === Closetag ===
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.js'
@@ -126,7 +126,8 @@ inoremap <c-a> <Esc>:update<cr>gi
 nmap // /<C-R><C-W><CR>
 
 nmap <leader>e :Explore<CR>
-nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+" nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>pv :Fern . -reveal=% -drawer<CR>
 nnoremap <silent> <Leader>+ :vertical resize +5<CR>
 nnoremap <silent> <Leader>- :vertical resize -5<CR>
 
@@ -162,6 +163,16 @@ nmap ,v :vsplit<cr>
 " Ruby
 nmap <leader>m ]m
 nmap <leader>M [m
+
+" Python
+au BufNewFile,BufRead *.py
+      \ set tabstop=4
+      \ softtabstop=4
+      \ shiftwidth=4
+      \ textwidth=79
+      \ expandtab
+      \ autoindent
+      \ fileformat=unix
 
 " Remove highlighted search terms
 nmap <BS> :noh<CR>
