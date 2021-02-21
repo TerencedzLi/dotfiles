@@ -96,6 +96,7 @@ source $ZSH/oh-my-zsh.sh
 PATH_DIRECTORIES=(
   $HOME/bin
   /Users/terenceli/go/bin
+  $HOME/Workspace/dotfiles/bin
 )
 
 for directory in $PATH_DIRECTORIES ; do
@@ -117,7 +118,6 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*" --glob
 
 alias git-cob="~/Workspace/dotfiles/bin/git-cob"
 alias tags="ctags -R --exclude=.git --exclude=log --exclude=node_modules *"
-alias tat="~/Workspace/dotfiles/tat"
 alias v="vim ~/.vimrc"
 alias nv="nvim ~/.config/nvim/init.vim"
 alias vim="nvim"

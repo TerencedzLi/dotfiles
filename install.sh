@@ -24,3 +24,9 @@ if [ ! -d ~/.config ] && [ ! -d ~/.config/nvim ]; then
   ln -s ~/Workspace/dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
 fi
 
+
+if [ ! -f ~/.tmux.conf ]; then
+  ln -s ~/Workspace/dotfiles/.tmux.conf ~/.tmux.conf
+fi
+
+
