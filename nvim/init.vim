@@ -63,10 +63,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'dense-analysis/ale'
-Plug 'Shopify/shadowenv.vim'
+
+if executable('shadowenv')
+  Plug 'Shopify/shadowenv.vim'
+end
+
 Plug 'ycm-core/YouCompleteMe'
 Plug 'pangloss/vim-javascript'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': 'javascript' }
 Plug 'sainnhe/forest-night'
 
 Plug 'lambdalisue/fern.vim'
@@ -76,6 +80,7 @@ call plug#end()
 if has('termguicolors')
   set termguicolors
 endif
+
 " The configuration options should be placed before `colorscheme forest-night`.
 let g:forest_night_enable_italic = 1
 let g:forest_night_disable_italic_comment = 1
