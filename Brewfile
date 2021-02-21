@@ -1,6 +1,5 @@
 brew 'neovim'
 brew 'reattach-to-user-namespace'
-brew 'zsh-syntax-highlighting'
 brew 'ctags'
 brew 'tmux'
 brew 'fzf'
