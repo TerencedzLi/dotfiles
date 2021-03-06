@@ -36,7 +36,7 @@ if [ ! -d ~/zsh-syntax-highlighting ]; then
 fi
 
 if [ ! -f ~/.zshrc ]; then
-  ln -sf ~/Workspace/dotfiles/.zshrc ~/.zshrc
+  ln -sf ./dotfiles/.zshrc ~/.zshrc
   source ~/.zshrc
 fi
 
@@ -44,14 +44,14 @@ if [ ! -d ~/.config ] && [ ! -d ~/.config/nvim ]; then
   mkdir -p ~/.config/nvim
   mkdir -p ~/.config/nvim/config
 
-  ln -sf ~/Workspace/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
-  ln -sf ~/Workspace/dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
-  ln -sf ~/Workspace/dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
+  ln -sf ./dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+  ln -sf ./dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
+  ln -sf ./dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
 fi
 
 
 if [ ! -f ~/.tmux.conf ]; then
-  ln -sf ~/Workspace/dotfiles/.tmux.conf ~/.tmux.conf
+  ln -sf ./dotfiles/.tmux.conf ~/.tmux.conf
 fi
 
 
