@@ -96,7 +96,7 @@ source $ZSH/oh-my-zsh.sh
 PATH_DIRECTORIES=(
   $HOME/bin
   $HOME/go/bin
-  $HOME/Workspace/dotfiles/bin
+  $HOME/dotfiles/bin
 )
 
 for directory in $PATH_DIRECTORIES ; do
