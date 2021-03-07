@@ -23,10 +23,6 @@ then
   if ! command -v ripper-tags &> /dev/null; then
     gem install ripper-tags
   fi
-
-  ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
-  ln -sf ~/dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
-  ln -sf ~/dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
 else
   if ! command -v brew &> /dev/null; then
     echo "Installing homebrew..."
@@ -34,18 +30,18 @@ else
 
     brew bundle
   fi
-
-  if [ ! -d ~/.config/nvim ]; then
-	  mkdir -p ~/.config/nvim/config
-
-	  ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
-	  ln -sf ~/dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
-	  ln -sf ~/dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
-  fi
 fi
 
 if [ ! -d ~/.oh-my-zsh ]; then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+if [ ! -d ~/.config/nvim ]; then
+  mkdir -p ~/.config/nvim/config
+
+  ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+  ln -sf ~/dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
+  ln -sf ~/dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
 fi
 
 if [ ! -d ~/zsh-syntax-highlighting ]; then
