@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/terenceli/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -95,7 +95,7 @@ source $ZSH/oh-my-zsh.sh
 
 PATH_DIRECTORIES=(
   $HOME/bin
-  /Users/terenceli/go/bin
+  $HOME/go/bin
   $HOME/Workspace/dotfiles/bin
 )
 
@@ -124,6 +124,6 @@ alias nv="nvim ~/.config/nvim/init.vim"
 alias vim="nvim"
 alias z="nvim ~/.zshrc"
 alias rtags="ripper-tags --extra=q -R --exclude=.git --exclude=log --exclude=tmp --exclude=vendor --exclude=node_modules --exclude=.dev . $(bundle list --paths | sed s@`pwd`\/@@)"
-if [ -e /Users/terenceli/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/terenceli/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
-source /Users/terenceli/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
