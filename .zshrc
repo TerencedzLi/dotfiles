@@ -123,7 +123,7 @@ alias v="vim ~/.vimrc"
 alias nv="nvim ~/.config/nvim/init.vim"
 alias vim="nvim"
 alias z="nvim ~/.zshrc"
-alias rtags="ripper-tags --extra=q -R --exclude=.git --exclude=log --exclude=tmp --exclude=vendor --exclude=node_modules --exclude=.dev . $(bundle list --paths | sed s@`pwd`\/@@)"
+alias rtags="ripper-tags --extra=q -R --exclude=.git --exclude=log --exclude=tmp --exclude=vendor --exclude=node_modules --exclude=.dev ."
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
