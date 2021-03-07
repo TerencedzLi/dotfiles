@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Dotfiles should be cloned in home directory
+
 if [ $SPIN ];
 then
   if ! command -v fzf &> /dev/null; then
@@ -17,12 +19,25 @@ then
   if ! command -v ctags &> /dev/null; then
     sudo apt install exuberant-ctags
   fi
+
+  ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+  ln -sf ~/dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
+  ln -sf ~/dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
 else
   if ! command -v brew &> /dev/null; then
-    echo "Installing homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "HELLO WROLD"
+    # echo "Installing homebrew..."
+    # /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    brew bundle
+    # brew bundle
+  fi
+
+  if [ ! -d ~/.config/nvim ]; then
+	  mkdir -p ~/.config/nvim/config
+
+	  ln -sf ./dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+	  ln -sf ./dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
+	  ln -sf ./dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
   fi
 fi
 
@@ -35,21 +50,9 @@ if [ ! -d ~/zsh-syntax-highlighting ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/zsh-syntax-highlighting 
 fi
 
-if [ ! -f ~/.zshrc ]; then
-  ln -sf ./dotfiles/.zshrc ~/.zshrc
-  source ~/.zshrc
-fi
-
-if [ ! -d ~/.config ] && [ ! -d ~/.config/nvim ]; then
-  mkdir -p ~/.config/nvim
-  mkdir -p ~/.config/nvim/config
-
-  ln -sf ./dotfiles/nvim/init.vim ~/.config/nvim/init.vim
-  ln -sf ./dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
-  ln -sf ./dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
-fi
-
-
+ln -sf ./dotfiles/.zshrc ~/.zshrc
+source ~/.zshrc
+ 
 if [ ! -f ~/.tmux.conf ]; then
   ln -sf ./dotfiles/.tmux.conf ~/.tmux.conf
 fi
