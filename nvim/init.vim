@@ -68,7 +68,6 @@ if executable('shadowenv')
   Plug 'Shopify/shadowenv.vim'
 end
 
-Plug 'ycm-core/YouCompleteMe'
 Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': 'javascript' }
 Plug 'sainnhe/forest-night'
