@@ -20,6 +20,10 @@ then
     sudo apt install exuberant-ctags
   fi
 
+  if ! command -v ripper-tags &> /dev/null; then
+    gem install ripper-tags
+  fi
+
   ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
   ln -sf ~/dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
   ln -sf ~/dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim

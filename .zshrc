@@ -104,6 +104,7 @@ for directory in $PATH_DIRECTORIES ; do
         PATH+=":$directory"
     fi
 done
+
 # Work
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
@@ -122,6 +123,7 @@ alias v="vim ~/.vimrc"
 alias nv="nvim ~/.config/nvim/init.vim"
 alias vim="nvim"
 alias z="nvim ~/.zshrc"
+alias rtags="ripper-tags --extra=q -R --exclude=.git --exclude=log --exclude=tmp --exclude=vendor --exclude=node_modules --exclude=.dev . $(bundle list --paths | sed s@`pwd`\/@@)"
 if [ -e /Users/terenceli/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/terenceli/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 source /Users/terenceli/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
