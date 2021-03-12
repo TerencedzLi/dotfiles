@@ -56,6 +56,7 @@ source ~/.zshrc
  
 if [ ! -f ~/.tmux.conf ]; then
   ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
+  tmux source-file ~/.tmux.conf
 fi
 
 
