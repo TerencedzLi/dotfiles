@@ -42,6 +42,8 @@ if [ ! -d ~/.config/nvim ]; then
   ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
   ln -sf ~/dotfiles/nvim/config/test.vim ~/.config/nvim/config/test.vim
   ln -sf ~/dotfiles/nvim/config/fzf.vim ~/.config/nvim/config/fzf.vim
+
+  nvim --headless +PlugInstall +qall
 fi
 
 if [ ! -d ~/zsh-syntax-highlighting ]; then
